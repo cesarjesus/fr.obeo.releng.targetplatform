@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.IUImpl#getID <em>ID</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.IUImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.IUImpl#getLocation <em>Location</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -97,6 +97,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getID() {
 		return id;
 	}
@@ -106,6 +107,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setID(String newID) {
 		String oldID = id;
 		id = newID;
@@ -118,6 +120,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -127,6 +130,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersion(String newVersion) {
 		String oldVersion = version;
 		version = newVersion;
@@ -139,6 +143,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Location getLocation() {
 		if (eContainerFeatureID() != TargetPlatformPackage.IU__LOCATION) return null;
 		return (Location)eContainer();
@@ -169,6 +174,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLocation(Location newLocation) {
 		if (newLocation != eInternalContainer() || (eContainerFeatureID() != TargetPlatformPackage.IU__LOCATION && newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, newLocation))
@@ -317,7 +323,7 @@ public class IUImpl extends MinimalEObjectImpl.Container implements IU {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ID: ");
 		result.append(id);
 		result.append(", version: ");

@@ -61,10 +61,6 @@ public enum Option implements Enumerator {
 	/**
 	 * The '<em><b>INCLUDE REQUIRED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>INCLUDE REQUIRED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INCLUDE_REQUIRED
 	 * @model literal="requirements"
@@ -76,10 +72,6 @@ public enum Option implements Enumerator {
 	/**
 	 * The '<em><b>INCLUDE ALL ENVIRONMENTS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>INCLUDE ALL ENVIRONMENTS</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INCLUDE_ALL_ENVIRONMENTS
 	 * @model literal="allEnvironments"
@@ -91,10 +83,6 @@ public enum Option implements Enumerator {
 	/**
 	 * The '<em><b>INCLUDE SOURCE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>INCLUDE SOURCE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INCLUDE_SOURCE
 	 * @model literal="source"
@@ -106,10 +94,6 @@ public enum Option implements Enumerator {
 	/**
 	 * The '<em><b>INCLUDE CONFIGURE PHASE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>INCLUDE CONFIGURE PHASE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INCLUDE_CONFIGURE_PHASE
 	 * @model literal="configurePhase"
@@ -144,6 +128,8 @@ public enum Option implements Enumerator {
 	 * Returns the '<em><b>Option</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Option get(String literal) {
@@ -160,6 +146,8 @@ public enum Option implements Enumerator {
 	 * Returns the '<em><b>Option</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Option getByName(String name) {
@@ -176,6 +164,8 @@ public enum Option implements Enumerator {
 	 * Returns the '<em><b>Option</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Option get(int value) {
@@ -226,6 +216,7 @@ public enum Option implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -235,6 +226,7 @@ public enum Option implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -244,6 +236,7 @@ public enum Option implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

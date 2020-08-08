@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.TargetContent#getTargetPlatform <em>Target Platform</em>}</li>
  * </ul>
- * </p>
  *
  * @see fr.obeo.releng.targetplatform.TargetPlatformPackage#getTargetContent()
  * @model interface="true" abstract="true"
@@ -25,10 +25,6 @@ public interface TargetContent extends EObject {
 	 * Returns the value of the '<em><b>Target Platform</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link fr.obeo.releng.targetplatform.TargetPlatform#getContents <em>Contents</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target Platform</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Platform</em>' container reference.
 	 * @see #setTargetPlatform(TargetPlatform)

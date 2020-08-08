@@ -11,10 +11,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.Options#getOptions <em>Options</em>}</li>
  * </ul>
- * </p>
  *
  * @see fr.obeo.releng.targetplatform.TargetPlatformPackage#getOptions()
  * @model
@@ -26,10 +26,6 @@ public interface Options extends TargetContent {
 	 * The list contents are of type {@link fr.obeo.releng.targetplatform.Option}.
 	 * The literals are from the enumeration {@link fr.obeo.releng.targetplatform.Option}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Options</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Options</em>' attribute list.
 	 * @see fr.obeo.releng.targetplatform.Option

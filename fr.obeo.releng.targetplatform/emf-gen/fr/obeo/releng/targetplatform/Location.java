@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.Location#getID <em>ID</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.Location#getUri <em>Uri</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.Location#getOptions <em>Options</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.Location#getIus <em>Ius</em>}</li>
  * </ul>
- * </p>
  *
  * @see fr.obeo.releng.targetplatform.TargetPlatformPackage#getLocation()
  * @model
@@ -27,10 +27,6 @@ public interface Location extends TargetContent {
 	/**
 	 * Returns the value of the '<em><b>ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>ID</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>ID</em>' attribute.
 	 * @see #setID(String)
@@ -53,10 +49,6 @@ public interface Location extends TargetContent {
 	/**
 	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uri</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(String)
@@ -81,10 +73,6 @@ public interface Location extends TargetContent {
 	 * The list contents are of type {@link fr.obeo.releng.targetplatform.Option}.
 	 * The literals are from the enumeration {@link fr.obeo.releng.targetplatform.Option}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Options</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Options</em>' attribute list.
 	 * @see fr.obeo.releng.targetplatform.Option
@@ -99,10 +87,6 @@ public interface Location extends TargetContent {
 	 * The list contents are of type {@link fr.obeo.releng.targetplatform.IU}.
 	 * It is bidirectional and its opposite is '{@link fr.obeo.releng.targetplatform.IU#getLocation <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ius</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ius</em>' containment reference list.
 	 * @see fr.obeo.releng.targetplatform.TargetPlatformPackage#getLocation_Ius()

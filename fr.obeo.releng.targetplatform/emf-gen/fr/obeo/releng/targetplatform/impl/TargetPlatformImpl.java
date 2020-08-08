@@ -13,8 +13,6 @@ import fr.obeo.releng.targetplatform.TargetContent;
 import fr.obeo.releng.targetplatform.TargetPlatform;
 import fr.obeo.releng.targetplatform.TargetPlatformPackage;
 
-import java.lang.Iterable;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -44,6 +42,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.TargetPlatformImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.TargetPlatformImpl#getContents <em>Contents</em>}</li>
@@ -52,7 +51,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  *   <li>{@link fr.obeo.releng.targetplatform.impl.TargetPlatformImpl#getLocations <em>Locations</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.TargetPlatformImpl#getEnvironment <em>Environment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -111,6 +109,7 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -120,6 +119,7 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -132,6 +132,7 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TargetContent> getContents() {
 		if (contents == null) {
 			contents = new EObjectContainmentWithInverseEList<TargetContent>(TargetContent.class, this, TargetPlatformPackage.TARGET_PLATFORM__CONTENTS, TargetPlatformPackage.TARGET_CONTENT__TARGET_PLATFORM);
@@ -144,10 +145,9 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<IncludeDeclaration> getIncludes() {
-		EList<TargetContent> _contents = this.getContents();
-		Iterable<IncludeDeclaration> _filter = Iterables.<IncludeDeclaration>filter(_contents, IncludeDeclaration.class);
-		List<IncludeDeclaration> _list = IterableExtensions.<IncludeDeclaration>toList(_filter);
+		List<IncludeDeclaration> _list = IterableExtensions.<IncludeDeclaration>toList(Iterables.<IncludeDeclaration>filter(this.getContents(), IncludeDeclaration.class));
 		return new UnmodifiableEList<IncludeDeclaration>(_list);
 	}
 
@@ -156,17 +156,14 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Option> getOptions() {
-		EList<TargetContent> _contents = this.getContents();
-		Iterable<Options> _filter = Iterables.<Options>filter(_contents, Options.class);
 		final Function1<Options, EList<Option>> _function = new Function1<Options, EList<Option>>() {
 			public EList<Option> apply(final Options it) {
 				return it.getOptions();
 			}
 		};
-		Iterable<EList<Option>> _map = IterableExtensions.<Options, EList<Option>>map(_filter, _function);
-		Iterable<Option> _flatten = Iterables.<Option>concat(_map);
-		List<Option> _list = IterableExtensions.<Option>toList(_flatten);
+		List<Option> _list = IterableExtensions.<Option>toList(Iterables.<Option>concat(IterableExtensions.<Options, EList<Option>>map(Iterables.<Options>filter(this.getContents(), Options.class), _function)));
 		return new UnmodifiableEList<Option>(_list);
 	}
 
@@ -175,10 +172,9 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Location> getLocations() {
-		EList<TargetContent> _contents = this.getContents();
-		Iterable<Location> _filter = Iterables.<Location>filter(_contents, Location.class);
-		List<Location> _list = IterableExtensions.<Location>toList(_filter);
+		List<Location> _list = IterableExtensions.<Location>toList(Iterables.<Location>filter(this.getContents(), Location.class));
 		return new UnmodifiableEList<Location>(_list);
 	}
 
@@ -187,6 +183,7 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Environment getEnvironment() {
 		Environment environment = basicGetEnvironment();
 		return environment != null && environment.eIsProxy() ? (Environment)eResolveProxy((InternalEObject)environment) : environment;
@@ -198,9 +195,7 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	public Environment basicGetEnvironment() {
-		EList<TargetContent> _contents = this.getContents();
-		Iterable<Environment> _filter = Iterables.<Environment>filter(_contents, Environment.class);
-		return IterableExtensions.<Environment>head(_filter);
+		return IterableExtensions.<Environment>head(Iterables.<Environment>filter(this.getContents(), Environment.class));
 	}
 
 	/**
@@ -328,7 +323,7 @@ public class TargetPlatformImpl extends MinimalEObjectImpl.Container implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

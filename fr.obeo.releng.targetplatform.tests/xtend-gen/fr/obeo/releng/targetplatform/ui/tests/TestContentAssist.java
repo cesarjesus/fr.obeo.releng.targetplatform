@@ -3,7 +3,6 @@ package fr.obeo.releng.targetplatform.ui.tests;
 import com.google.common.collect.ImmutableList;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 import com.google.inject.Provider;
 import fr.obeo.releng.targetplatform.TargetPlatformRuntimeModule;
 import fr.obeo.releng.targetplatform.TargetPlatformStandaloneSetup;
@@ -21,7 +20,6 @@ import org.eclipse.equinox.p2.metadata.IInstallableUnit;
 import org.eclipse.equinox.p2.metadata.Version;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jdt.launching.environments.IExecutionEnvironment;
-import org.eclipse.jdt.launching.environments.IExecutionEnvironmentsManager;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.junit4.ui.AbstractContentAssistProcessorTest;
@@ -37,71 +35,54 @@ import org.junit.Test;
 
 @SuppressWarnings("all")
 public class TestContentAssist extends AbstractContentAssistProcessorTest {
-  private final static TargetPlatformRuntimeModule MOCK_RUNTIME_MODULE = new TargetPlatformRuntimeModule() {
+  private static final TargetPlatformRuntimeModule MOCK_RUNTIME_MODULE = new TargetPlatformRuntimeModule() {
+    @Override
     public Provider<IProvisioningAgent> provideIProvisioningAgent() {
       return new Provider<IProvisioningAgent>() {
+        @Override
         public IProvisioningAgent get() {
           return new MockProvisioningAgent(new IQueryResultProvider<IInstallableUnit>() {
+            @Override
             public List<IInstallableUnit> listIUs(final URI location) {
               List<IInstallableUnit> _xifexpression = null;
-              String _string = location.toString();
-              boolean _equals = "location1".equals(_string);
+              boolean _equals = "location1".equals(location.toString());
               if (_equals) {
-                Version _createOSGi = Version.createOSGi(1, 2, 0);
-                MockIU _createFeature = MockIU.createFeature("org.iu1", _createOSGi);
-                _xifexpression = CollectionLiterals.<IInstallableUnit>newImmutableList(_createFeature);
+                _xifexpression = CollectionLiterals.<IInstallableUnit>newImmutableList(
+                  MockIU.createFeature("org.iu1", Version.createOSGi(1, 2, 0)));
               } else {
                 List<IInstallableUnit> _xifexpression_1 = null;
-                String _string_1 = location.toString();
-                boolean _equals_1 = "location2".equals(_string_1);
+                boolean _equals_1 = "location2".equals(location.toString());
                 if (_equals_1) {
-                  Version _createOSGi_1 = Version.createOSGi(1, 2, 0);
-                  MockIU _createFeature_1 = MockIU.createFeature("org.iu1", _createOSGi_1);
-                  Version _createOSGi_2 = Version.createOSGi(3, 7, 72);
-                  MockIU _createFeature_2 = MockIU.createFeature("org.iu2", _createOSGi_2);
-                  _xifexpression_1 = CollectionLiterals.<IInstallableUnit>newImmutableList(_createFeature_1, _createFeature_2);
+                  _xifexpression_1 = CollectionLiterals.<IInstallableUnit>newImmutableList(
+                    MockIU.createFeature("org.iu1", Version.createOSGi(1, 2, 0)), 
+                    MockIU.createFeature("org.iu2", Version.createOSGi(3, 7, 72)));
                 } else {
                   List<IInstallableUnit> _xifexpression_2 = null;
-                  String _string_2 = location.toString();
-                  boolean _equals_2 = "location3".equals(_string_2);
+                  boolean _equals_2 = "location3".equals(location.toString());
                   if (_equals_2) {
-                    Version _createOSGi_3 = Version.createOSGi(1, 2, 0);
-                    MockIU _createFeature_3 = MockIU.createFeature("org.iu1", _createOSGi_3);
-                    Version _createOSGi_4 = Version.createOSGi(1, 2, 5);
-                    MockIU _createFeature_4 = MockIU.createFeature("org.iu1", _createOSGi_4);
-                    Version _createOSGi_5 = Version.createOSGi(1, 3, 2);
-                    MockIU _createFeature_5 = MockIU.createFeature("org.iu1", _createOSGi_5);
-                    Version _createOSGi_6 = Version.createOSGi(2, 0, 0);
-                    MockIU _createFeature_6 = MockIU.createFeature("org.iu1", _createOSGi_6);
-                    Version _createOSGi_7 = Version.createOSGi(2, 3, 0);
-                    MockIU _createFeature_7 = MockIU.createFeature("org.iu1", _createOSGi_7);
-                    Version _createOSGi_8 = Version.createOSGi(3, 9, 0);
-                    MockIU _createFeature_8 = MockIU.createFeature("org.iu1", _createOSGi_8);
-                    _xifexpression_2 = CollectionLiterals.<IInstallableUnit>newImmutableList(_createFeature_3, _createFeature_4, _createFeature_5, _createFeature_6, _createFeature_7, _createFeature_8);
+                    _xifexpression_2 = CollectionLiterals.<IInstallableUnit>newImmutableList(
+                      MockIU.createFeature("org.iu1", Version.createOSGi(1, 2, 0)), 
+                      MockIU.createFeature("org.iu1", Version.createOSGi(1, 2, 5)), 
+                      MockIU.createFeature("org.iu1", Version.createOSGi(1, 3, 2)), 
+                      MockIU.createFeature("org.iu1", Version.createOSGi(2, 0, 0)), 
+                      MockIU.createFeature("org.iu1", Version.createOSGi(2, 3, 0)), 
+                      MockIU.createFeature("org.iu1", Version.createOSGi(3, 9, 0)));
                   } else {
                     List<IInstallableUnit> _xifexpression_3 = null;
-                    String _string_3 = location.toString();
-                    boolean _equals_3 = "location4".equals(_string_3);
+                    boolean _equals_3 = "location4".equals(location.toString());
                     if (_equals_3) {
-                      Version _createOSGi_9 = Version.createOSGi(1, 2, 0);
-                      MockIU _createFeature_9 = MockIU.createFeature("org.iu1", _createOSGi_9);
-                      Version _createOSGi_10 = Version.createOSGi(3, 7, 72);
-                      MockIU _createFeature_10 = MockIU.createFeature("org.iu2", _createOSGi_10);
-                      Version _createOSGi_11 = Version.createOSGi(1, 2, 0);
-                      MockIU _createFeature_11 = MockIU.createFeature("com.iu1", _createOSGi_11);
-                      Version _createOSGi_12 = Version.createOSGi(3, 7, 72);
-                      MockIU _createFeature_12 = MockIU.createFeature("com.iu2", _createOSGi_12);
-                      Version _createOSGi_13 = Version.createOSGi(3, 7, 72);
-                      MockIU _createFeature_13 = MockIU.createFeature("com.iu3", _createOSGi_13);
-                      _xifexpression_3 = CollectionLiterals.<IInstallableUnit>newImmutableList(_createFeature_9, _createFeature_10, _createFeature_11, _createFeature_12, _createFeature_13);
+                      _xifexpression_3 = CollectionLiterals.<IInstallableUnit>newImmutableList(
+                        MockIU.createFeature("org.iu1", Version.createOSGi(1, 2, 0)), 
+                        MockIU.createFeature("org.iu2", Version.createOSGi(3, 7, 72)), 
+                        MockIU.createFeature("com.iu1", Version.createOSGi(1, 2, 0)), 
+                        MockIU.createFeature("com.iu2", Version.createOSGi(3, 7, 72)), 
+                        MockIU.createFeature("com.iu3", Version.createOSGi(3, 7, 72)));
                     } else {
-                      String _string_4 = location.toString();
-                      boolean _equals_4 = "badLocation".equals(_string_4);
+                      boolean _equals_4 = "badLocation".equals(location.toString());
                       if (_equals_4) {
                         throw new RuntimeException("bad location");
                       } else {
-                        String _string_5 = location.toString();
-                        boolean _equals_5 = "emptyRepository".equals(_string_5);
+                        boolean _equals_5 = "emptyRepository".equals(location.toString());
                         if (_equals_5) {
                           return CollectionLiterals.<IInstallableUnit>emptyList();
                         } else {
@@ -123,16 +104,18 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
     }
   };
   
+  @Override
   protected ISetup doGetSetup() {
     return new TargetPlatformStandaloneSetup() {
+      @Override
       public Injector createInjector() {
         SharedStateModule _sharedStateModule = new SharedStateModule();
         TargetPlatformActivator _instance = TargetPlatformActivator.getInstance();
         TargetPlatformUiModule _targetPlatformUiModule = new TargetPlatformUiModule(_instance);
-        Module _mixin = Modules2.mixin(
-          TestContentAssist.MOCK_RUNTIME_MODULE, _sharedStateModule, 
-          ((Module) _targetPlatformUiModule));
-        return Guice.createInjector(_mixin);
+        return Guice.createInjector(
+          Modules2.mixin(
+            TestContentAssist.MOCK_RUNTIME_MODULE, _sharedStateModule, 
+            ((com.google.inject.Module) _targetPlatformUiModule)));
       }
     };
   }
@@ -144,8 +127,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("target \"Target Platform Name\"");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _assertText = _newBuilder.assertText(_builder.toString());
-      ContentAssistProcessorTestBuilder _applyProposal = _assertText.applyProposal();
+      ContentAssistProcessorTestBuilder _applyProposal = _newBuilder.assertText(_builder.toString()).applyProposal();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("target \"Target Platform Name\"");
       _builder_1.newLine();
@@ -154,12 +136,11 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("target \"Target Platform Name\"");
       _builder_2.newLine();
-      ContentAssistProcessorTestBuilder _assertText_1 = _newBuilder_1.assertText(_builder_2.toString());
+      ContentAssistProcessorTestBuilder _assertText = _newBuilder_1.assertText(_builder_2.toString());
       StringConcatenation _builder_3 = new StringConcatenation();
       _builder_3.append("target \"Target Platform Name\"");
       _builder_3.newLine();
-      ContentAssistProcessorTestBuilder.ProposalTester _assertProposal = _assertText_1.assertProposal(_builder_3.toString());
-      _assertProposal.withDisplayString("target \"Target Platform Name\" - create a new target platform");
+      _assertText.assertProposal(_builder_3.toString()).withDisplayString("target \"Target Platform Name\" - create a new target platform");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -168,14 +149,12 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
   @Test
   public void testTargetPlatform2() {
     try {
-      ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append("target");
+      ContentAssistProcessorTestBuilder _append = this.newBuilder().append("target");
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(" ");
       _builder.append("\"Target Platform Name\"");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _assertText = _append.assertText(_builder.toString());
-      ContentAssistProcessorTestBuilder _applyProposal = _assertText.applyProposal();
+      ContentAssistProcessorTestBuilder _applyProposal = _append.assertText(_builder.toString()).applyProposal();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("target \"Target Platform Name\"");
       _builder_1.newLine();
@@ -188,13 +167,11 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
   @Test
   public void testTargetPlatform3() {
     try {
-      ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append("target ");
+      ContentAssistProcessorTestBuilder _append = this.newBuilder().append("target ");
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("\"Target Platform Name\"");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _assertText = _append.assertText(_builder.toString());
-      ContentAssistProcessorTestBuilder _applyProposal = _assertText.applyProposal();
+      ContentAssistProcessorTestBuilder _applyProposal = _append.assertText(_builder.toString()).applyProposal();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("target \"Target Platform Name\"");
       _builder_1.newLine();
@@ -207,13 +184,11 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
   @Test
   public void testTargetPlatform4() {
     try {
-      ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append("tar");
+      ContentAssistProcessorTestBuilder _append = this.newBuilder().append("tar");
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("target \"Target Platform Name\"");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _assertText = _append.assertText(_builder.toString());
-      ContentAssistProcessorTestBuilder _applyProposal = _assertText.applyProposal();
+      ContentAssistProcessorTestBuilder _applyProposal = _append.assertText(_builder.toString()).applyProposal();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("target \"Target Platform Name\"");
       _builder_1.newLine();
@@ -255,8 +230,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.append("target \"TPName\"");
       _builder.newLine();
       _builder.append("with ");
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      _append.assertText("requirements", "allEnvironments", "source", "configurePhase");
+      _newBuilder.append(_builder.toString()).assertText("requirements", "allEnvironments", "source", "configurePhase");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -270,10 +244,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.append("target \"TPName\"");
       _builder.newLine();
       _builder.append("with source ");
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _assertText = _append.assertText("requirements", "allEnvironments", "configurePhase");
-      ContentAssistProcessorTestBuilder _append_1 = _assertText.append("requirements ");
-      _append_1.assertText("allEnvironments", "configurePhase");
+      _newBuilder.append(_builder.toString()).assertText("requirements", "allEnvironments", "configurePhase").append("requirements ").assertText("allEnvironments", "configurePhase");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -308,38 +279,25 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
   @Test
   public void testTargetContentEnv0() {
     try {
-      ImmutableList.Builder<String> _builder = ImmutableList.<String>builder();
-      String[] _knownOSValues = Platform.knownOSValues();
-      ImmutableList.Builder<String> _addAll = _builder.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownOSValues)));
-      String[] _knownWSValues = Platform.knownWSValues();
-      ImmutableList.Builder<String> _addAll_1 = _addAll.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownWSValues)));
-      String[] _knownOSArchValues = Platform.knownOSArchValues();
-      ImmutableList.Builder<String> _addAll_2 = _addAll_1.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownOSArchValues)));
-      IExecutionEnvironmentsManager _executionEnvironmentsManager = JavaRuntime.getExecutionEnvironmentsManager();
-      IExecutionEnvironment[] _executionEnvironments = _executionEnvironmentsManager.getExecutionEnvironments();
       final Function1<IExecutionEnvironment, String> _function = new Function1<IExecutionEnvironment, String>() {
+        @Override
         public String apply(final IExecutionEnvironment it) {
           return it.getId();
         }
       };
-      List<String> _map = ListExtensions.<IExecutionEnvironment, String>map(((List<IExecutionEnvironment>)Conversions.doWrapArray(_executionEnvironments)), _function);
-      ImmutableList.Builder<String> _addAll_3 = _addAll_2.addAll(_map);
-      Locale[] _availableLocales = Locale.getAvailableLocales();
       final Function1<Locale, String> _function_1 = new Function1<Locale, String>() {
+        @Override
         public String apply(final Locale it) {
           return it.toString();
         }
       };
-      List<String> _map_1 = ListExtensions.<Locale, String>map(((List<Locale>)Conversions.doWrapArray(_availableLocales)), _function_1);
-      ImmutableList.Builder<String> _addAll_4 = _addAll_3.addAll(_map_1);
-      final ImmutableList<String> p = _addAll_4.build();
+      final ImmutableList<String> p = ImmutableList.<String>builder().addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownOSValues()))).addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownWSValues()))).addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownOSArchValues()))).addAll(ListExtensions.<IExecutionEnvironment, String>map(((List<IExecutionEnvironment>)Conversions.doWrapArray(JavaRuntime.getExecutionEnvironmentsManager().getExecutionEnvironments())), _function)).addAll(ListExtensions.<Locale, String>map(((List<Locale>)Conversions.doWrapArray(Locale.getAvailableLocales())), _function_1)).build();
       ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("target \"TPName\"");
-      _builder_1.newLine();
-      _builder_1.append("environment ");
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder_1.toString());
-      _append.assertText(((String[])Conversions.unwrapArray(p, String.class)));
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("target \"TPName\"");
+      _builder.newLine();
+      _builder.append("environment ");
+      _newBuilder.append(_builder.toString()).assertText(((String[])Conversions.unwrapArray(p, String.class)));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -374,36 +332,25 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
   @Test
   public void testTargetContentEnv2() {
     try {
-      ImmutableList.Builder<String> _builder = ImmutableList.<String>builder();
-      String[] _knownWSValues = Platform.knownWSValues();
-      ImmutableList.Builder<String> _addAll = _builder.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownWSValues)));
-      String[] _knownOSArchValues = Platform.knownOSArchValues();
-      ImmutableList.Builder<String> _addAll_1 = _addAll.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownOSArchValues)));
-      IExecutionEnvironmentsManager _executionEnvironmentsManager = JavaRuntime.getExecutionEnvironmentsManager();
-      IExecutionEnvironment[] _executionEnvironments = _executionEnvironmentsManager.getExecutionEnvironments();
       final Function1<IExecutionEnvironment, String> _function = new Function1<IExecutionEnvironment, String>() {
+        @Override
         public String apply(final IExecutionEnvironment it) {
           return it.getId();
         }
       };
-      List<String> _map = ListExtensions.<IExecutionEnvironment, String>map(((List<IExecutionEnvironment>)Conversions.doWrapArray(_executionEnvironments)), _function);
-      ImmutableList.Builder<String> _addAll_2 = _addAll_1.addAll(_map);
-      Locale[] _availableLocales = Locale.getAvailableLocales();
       final Function1<Locale, String> _function_1 = new Function1<Locale, String>() {
+        @Override
         public String apply(final Locale it) {
           return it.toString();
         }
       };
-      List<String> _map_1 = ListExtensions.<Locale, String>map(((List<Locale>)Conversions.doWrapArray(_availableLocales)), _function_1);
-      ImmutableList.Builder<String> _addAll_3 = _addAll_2.addAll(_map_1);
-      final ImmutableList<String> p = _addAll_3.build();
+      final ImmutableList<String> p = ImmutableList.<String>builder().addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownWSValues()))).addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownOSArchValues()))).addAll(ListExtensions.<IExecutionEnvironment, String>map(((List<IExecutionEnvironment>)Conversions.doWrapArray(JavaRuntime.getExecutionEnvironmentsManager().getExecutionEnvironments())), _function)).addAll(ListExtensions.<Locale, String>map(((List<Locale>)Conversions.doWrapArray(Locale.getAvailableLocales())), _function_1)).build();
       ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("target \"TPName\"");
-      _builder_1.newLine();
-      _builder_1.append("environment macosx ");
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder_1.toString());
-      _append.assertText(((String[])Conversions.unwrapArray(p, String.class)));
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("target \"TPName\"");
+      _builder.newLine();
+      _builder.append("environment macosx ");
+      _newBuilder.append(_builder.toString()).assertText(((String[])Conversions.unwrapArray(p, String.class)));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -412,36 +359,25 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
   @Test
   public void testTargetContentEnv3() {
     try {
-      ImmutableList.Builder<String> _builder = ImmutableList.<String>builder();
-      String[] _knownOSValues = Platform.knownOSValues();
-      ImmutableList.Builder<String> _addAll = _builder.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownOSValues)));
-      String[] _knownOSArchValues = Platform.knownOSArchValues();
-      ImmutableList.Builder<String> _addAll_1 = _addAll.addAll(((Iterable<? extends String>)Conversions.doWrapArray(_knownOSArchValues)));
-      IExecutionEnvironmentsManager _executionEnvironmentsManager = JavaRuntime.getExecutionEnvironmentsManager();
-      IExecutionEnvironment[] _executionEnvironments = _executionEnvironmentsManager.getExecutionEnvironments();
       final Function1<IExecutionEnvironment, String> _function = new Function1<IExecutionEnvironment, String>() {
+        @Override
         public String apply(final IExecutionEnvironment it) {
           return it.getId();
         }
       };
-      List<String> _map = ListExtensions.<IExecutionEnvironment, String>map(((List<IExecutionEnvironment>)Conversions.doWrapArray(_executionEnvironments)), _function);
-      ImmutableList.Builder<String> _addAll_2 = _addAll_1.addAll(_map);
-      Locale[] _availableLocales = Locale.getAvailableLocales();
       final Function1<Locale, String> _function_1 = new Function1<Locale, String>() {
+        @Override
         public String apply(final Locale it) {
           return it.toString();
         }
       };
-      List<String> _map_1 = ListExtensions.<Locale, String>map(((List<Locale>)Conversions.doWrapArray(_availableLocales)), _function_1);
-      ImmutableList.Builder<String> _addAll_3 = _addAll_2.addAll(_map_1);
-      final ImmutableList<String> p = _addAll_3.build();
+      final ImmutableList<String> p = ImmutableList.<String>builder().addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownOSValues()))).addAll(((Iterable<? extends String>)Conversions.doWrapArray(Platform.knownOSArchValues()))).addAll(ListExtensions.<IExecutionEnvironment, String>map(((List<IExecutionEnvironment>)Conversions.doWrapArray(JavaRuntime.getExecutionEnvironmentsManager().getExecutionEnvironments())), _function)).addAll(ListExtensions.<Locale, String>map(((List<Locale>)Conversions.doWrapArray(Locale.getAvailableLocales())), _function_1)).build();
       ContentAssistProcessorTestBuilder _newBuilder = this.newBuilder();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("target \"TPName\"");
-      _builder_1.newLine();
-      _builder_1.append("environment cocoa ");
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder_1.toString());
-      _append.assertText(((String[])Conversions.unwrapArray(p, String.class)));
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("target \"TPName\"");
+      _builder.newLine();
+      _builder.append("environment cocoa ");
+      _newBuilder.append(_builder.toString()).assertText(((String[])Conversions.unwrapArray(p, String.class)));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -487,9 +423,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "org.iu1");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -509,9 +443,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "org.iu1", 
         "org.iu2");
     } catch (Throwable _e) {
@@ -532,9 +464,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "org.iu1");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -554,9 +484,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "org.iu1", 
         "org.iu2", 
         "com.iu1", 
@@ -581,9 +509,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "org.iu1", 
         "org.iu2");
     } catch (Throwable _e) {
@@ -605,9 +531,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "com.iu1", 
         "com.iu2", 
         "com.iu3");
@@ -629,9 +553,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText("");
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText("");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -650,9 +572,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText("");
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText("");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -672,9 +592,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "[1.2.0,1.2.1)", 
         "[1.2.0,1.3.0)", 
         "[1.2.0,2.0.0)", 
@@ -699,9 +617,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "[1.2.0,1.2.1)", 
         "[1.2.0,1.3.0)", 
         "[1.2.0,2.0.0)", 
@@ -748,9 +664,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         "org.iu2");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -776,9 +690,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText("");
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText("");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -798,9 +710,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(3);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(3).assertText(
         " [1.2.0,1.2.1)", 
         " [1.2.0,1.3.0)", 
         " [1.2.0,2.0.0)", 
@@ -819,8 +729,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.append("target \"TPName\"");
       _builder.newLine();
       _builder.append("location ");
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      _append.assertText(
+      _newBuilder.append(_builder.toString()).assertText(
         "\"http://p2.repository.url/\" ", 
         "locationID ");
     } catch (Throwable _e) {
@@ -860,8 +769,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("location ");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      _append.assertText(
+      _newBuilder.append(_builder.toString()).assertText(
         "\"http://p2.repository.url/\" ", 
         "locationID ");
     } catch (Throwable _e) {
@@ -878,8 +786,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("location");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      _append.assertText(
+      _newBuilder.append(_builder.toString()).assertText(
         "\"http://p2.repository.url/\" ", 
         "locationID ");
     } catch (Throwable _e) {
@@ -903,9 +810,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(22);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(22).assertText(
         "\"http://p2.repository.url/\" ", 
         "locationID ");
     } catch (Throwable _e) {
@@ -929,8 +834,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(23);
+      ContentAssistProcessorTestBuilder _cursorBack = _newBuilder.append(_builder.toString()).cursorBack(23);
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("location \"http://p2.repository.url/\" {");
       _builder_1.newLine();
@@ -961,9 +865,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(22);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(22).assertText(
         "\"http://p2.repository.url/\" ", 
         "locationID ");
     } catch (Throwable _e) {
@@ -984,9 +886,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(6);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(6).assertText(
         "locationID ");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -1006,9 +906,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(7);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(7).assertText(
         " locationID");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -1028,9 +926,7 @@ public class TestContentAssist extends AbstractContentAssistProcessorTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      ContentAssistProcessorTestBuilder _append = _newBuilder.append(_builder.toString());
-      ContentAssistProcessorTestBuilder _cursorBack = _append.cursorBack(6);
-      _cursorBack.assertText(
+      _newBuilder.append(_builder.toString()).cursorBack(6).assertText(
         " locationID ");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

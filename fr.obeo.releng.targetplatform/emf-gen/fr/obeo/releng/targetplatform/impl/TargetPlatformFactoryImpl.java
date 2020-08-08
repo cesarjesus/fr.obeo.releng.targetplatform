@@ -115,6 +115,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetPlatform createTargetPlatform() {
 		TargetPlatformImpl targetPlatform = new TargetPlatformImpl();
 		return targetPlatform;
@@ -125,6 +126,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Options createOptions() {
 		OptionsImpl options = new OptionsImpl();
 		return options;
@@ -135,6 +137,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Environment createEnvironment() {
 		EnvironmentImpl environment = new EnvironmentImpl();
 		return environment;
@@ -145,6 +148,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Location createLocation() {
 		LocationImpl location = new LocationImpl();
 		return location;
@@ -155,6 +159,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IncludeDeclaration createIncludeDeclaration() {
 		IncludeDeclarationImpl includeDeclaration = new IncludeDeclarationImpl();
 		return includeDeclaration;
@@ -165,6 +170,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IU createIU() {
 		IUImpl iu = new IUImpl();
 		return iu;
@@ -231,6 +237,7 @@ public class TargetPlatformFactoryImpl extends EFactoryImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetPlatformPackage getTargetPlatformPackage() {
 		return (TargetPlatformPackage)getEPackage();
 	}

@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.IncludeDeclarationImpl#getTargetPlatform <em>Target Platform</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.IncludeDeclarationImpl#getImportURI <em>Import URI</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -76,6 +76,7 @@ public class IncludeDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetPlatform getTargetPlatform() {
 		if (eContainerFeatureID() != TargetPlatformPackage.INCLUDE_DECLARATION__TARGET_PLATFORM) return null;
 		return (TargetPlatform)eContainer();
@@ -106,6 +107,7 @@ public class IncludeDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetPlatform(TargetPlatform newTargetPlatform) {
 		if (newTargetPlatform != eInternalContainer() || (eContainerFeatureID() != TargetPlatformPackage.INCLUDE_DECLARATION__TARGET_PLATFORM && newTargetPlatform != null)) {
 			if (EcoreUtil.isAncestor(this, newTargetPlatform))
@@ -127,6 +129,7 @@ public class IncludeDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImportURI() {
 		return importURI;
 	}
@@ -136,6 +139,7 @@ public class IncludeDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImportURI(String newImportURI) {
 		String oldImportURI = importURI;
 		importURI = newImportURI;
@@ -265,7 +269,7 @@ public class IncludeDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (importURI: ");
 		result.append(importURI);
 		result.append(')');

@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.OptionsImpl#getTargetPlatform <em>Target Platform</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.OptionsImpl#getOptions <em>Options</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -72,6 +72,7 @@ public class OptionsImpl extends MinimalEObjectImpl.Container implements Options
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetPlatform getTargetPlatform() {
 		if (eContainerFeatureID() != TargetPlatformPackage.OPTIONS__TARGET_PLATFORM) return null;
 		return (TargetPlatform)eContainer();
@@ -102,6 +103,7 @@ public class OptionsImpl extends MinimalEObjectImpl.Container implements Options
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetPlatform(TargetPlatform newTargetPlatform) {
 		if (newTargetPlatform != eInternalContainer() || (eContainerFeatureID() != TargetPlatformPackage.OPTIONS__TARGET_PLATFORM && newTargetPlatform != null)) {
 			if (EcoreUtil.isAncestor(this, newTargetPlatform))
@@ -123,6 +125,7 @@ public class OptionsImpl extends MinimalEObjectImpl.Container implements Options
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Option> getOptions() {
 		if (options == null) {
 			options = new EDataTypeEList<Option>(Option.class, this, TargetPlatformPackage.OPTIONS__OPTIONS);
@@ -254,7 +257,7 @@ public class OptionsImpl extends MinimalEObjectImpl.Container implements Options
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (options: ");
 		result.append(options);
 		result.append(')');

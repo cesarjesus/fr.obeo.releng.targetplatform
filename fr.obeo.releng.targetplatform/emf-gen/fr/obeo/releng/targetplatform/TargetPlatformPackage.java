@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see fr.obeo.releng.targetplatform.TargetPlatformFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel prefix='TargetPlatform' modelName='TargetPlatform' basePackage='fr.obeo.releng'"
  * @generated
  */
 public interface TargetPlatformPackage extends EPackage {

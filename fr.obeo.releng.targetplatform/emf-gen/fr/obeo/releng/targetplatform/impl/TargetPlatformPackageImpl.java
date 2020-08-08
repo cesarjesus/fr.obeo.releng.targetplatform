@@ -131,7 +131,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link TargetPlatformPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -145,7 +145,8 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 		if (isInited) return (TargetPlatformPackage)EPackage.Registry.INSTANCE.getEPackage(TargetPlatformPackage.eNS_URI);
 
 		// Obtain or create and register package
-		TargetPlatformPackageImpl theTargetPlatformPackage = (TargetPlatformPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof TargetPlatformPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new TargetPlatformPackageImpl());
+		Object registeredTargetPlatformPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		TargetPlatformPackageImpl theTargetPlatformPackage = registeredTargetPlatformPackage instanceof TargetPlatformPackageImpl ? (TargetPlatformPackageImpl)registeredTargetPlatformPackage : new TargetPlatformPackageImpl();
 
 		isInited = true;
 
@@ -161,7 +162,6 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 		// Mark meta-data to indicate it can't be changed
 		theTargetPlatformPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(TargetPlatformPackage.eNS_URI, theTargetPlatformPackage);
 		return theTargetPlatformPackage;
@@ -172,6 +172,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTargetPlatform() {
 		return targetPlatformEClass;
 	}
@@ -181,6 +182,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTargetPlatform_Name() {
 		return (EAttribute)targetPlatformEClass.getEStructuralFeatures().get(0);
 	}
@@ -190,6 +192,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetPlatform_Contents() {
 		return (EReference)targetPlatformEClass.getEStructuralFeatures().get(1);
 	}
@@ -199,6 +202,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetPlatform_Includes() {
 		return (EReference)targetPlatformEClass.getEStructuralFeatures().get(2);
 	}
@@ -208,6 +212,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTargetPlatform_Options() {
 		return (EAttribute)targetPlatformEClass.getEStructuralFeatures().get(3);
 	}
@@ -217,6 +222,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetPlatform_Locations() {
 		return (EReference)targetPlatformEClass.getEStructuralFeatures().get(4);
 	}
@@ -226,6 +232,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetPlatform_Environment() {
 		return (EReference)targetPlatformEClass.getEStructuralFeatures().get(5);
 	}
@@ -235,6 +242,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTargetContent() {
 		return targetContentEClass;
 	}
@@ -244,6 +252,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTargetContent_TargetPlatform() {
 		return (EReference)targetContentEClass.getEStructuralFeatures().get(0);
 	}
@@ -253,6 +262,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOptions() {
 		return optionsEClass;
 	}
@@ -262,6 +272,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOptions_Options() {
 		return (EAttribute)optionsEClass.getEStructuralFeatures().get(0);
 	}
@@ -271,6 +282,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEnvironment() {
 		return environmentEClass;
 	}
@@ -280,6 +292,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEnvironment_Env() {
 		return (EAttribute)environmentEClass.getEStructuralFeatures().get(0);
 	}
@@ -289,6 +302,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEnvironment_OperatingSystem() {
 		return (EAttribute)environmentEClass.getEStructuralFeatures().get(1);
 	}
@@ -298,6 +312,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEnvironment_WindowingSystem() {
 		return (EAttribute)environmentEClass.getEStructuralFeatures().get(2);
 	}
@@ -307,6 +322,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEnvironment_Architecture() {
 		return (EAttribute)environmentEClass.getEStructuralFeatures().get(3);
 	}
@@ -316,6 +332,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEnvironment_Localization() {
 		return (EAttribute)environmentEClass.getEStructuralFeatures().get(4);
 	}
@@ -325,6 +342,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEnvironment_ExecutionEnvironment() {
 		return (EAttribute)environmentEClass.getEStructuralFeatures().get(5);
 	}
@@ -334,6 +352,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLocation() {
 		return locationEClass;
 	}
@@ -343,6 +362,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLocation_ID() {
 		return (EAttribute)locationEClass.getEStructuralFeatures().get(0);
 	}
@@ -352,6 +372,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLocation_Uri() {
 		return (EAttribute)locationEClass.getEStructuralFeatures().get(1);
 	}
@@ -361,6 +382,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLocation_Options() {
 		return (EAttribute)locationEClass.getEStructuralFeatures().get(2);
 	}
@@ -370,6 +392,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLocation_Ius() {
 		return (EReference)locationEClass.getEStructuralFeatures().get(3);
 	}
@@ -379,6 +402,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIncludeDeclaration() {
 		return includeDeclarationEClass;
 	}
@@ -388,6 +412,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIncludeDeclaration_ImportURI() {
 		return (EAttribute)includeDeclarationEClass.getEStructuralFeatures().get(0);
 	}
@@ -397,6 +422,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIU() {
 		return iuEClass;
 	}
@@ -406,6 +432,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIU_ID() {
 		return (EAttribute)iuEClass.getEStructuralFeatures().get(0);
 	}
@@ -415,6 +442,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIU_Version() {
 		return (EAttribute)iuEClass.getEStructuralFeatures().get(1);
 	}
@@ -424,6 +452,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIU_Location() {
 		return (EReference)iuEClass.getEStructuralFeatures().get(2);
 	}
@@ -433,6 +462,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getOption() {
 		return optionEEnum;
 	}
@@ -442,6 +472,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getLocale() {
 		return localeEDataType;
 	}
@@ -451,6 +482,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getExecutionEnvironment() {
 		return executionEnvironmentEDataType;
 	}
@@ -460,6 +492,7 @@ public class TargetPlatformPackageImpl extends EPackageImpl implements TargetPla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetPlatformFactory getTargetPlatformFactory() {
 		return (TargetPlatformFactory)getEFactoryInstance();
 	}

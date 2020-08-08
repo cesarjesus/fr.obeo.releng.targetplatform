@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.LocationImpl#getTargetPlatform <em>Target Platform</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.LocationImpl#getID <em>ID</em>}</li>
@@ -39,7 +40,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.obeo.releng.targetplatform.impl.LocationImpl#getOptions <em>Options</em>}</li>
  *   <li>{@link fr.obeo.releng.targetplatform.impl.LocationImpl#getIus <em>Ius</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -128,6 +128,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetPlatform getTargetPlatform() {
 		if (eContainerFeatureID() != TargetPlatformPackage.LOCATION__TARGET_PLATFORM) return null;
 		return (TargetPlatform)eContainer();
@@ -158,6 +159,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetPlatform(TargetPlatform newTargetPlatform) {
 		if (newTargetPlatform != eInternalContainer() || (eContainerFeatureID() != TargetPlatformPackage.LOCATION__TARGET_PLATFORM && newTargetPlatform != null)) {
 			if (EcoreUtil.isAncestor(this, newTargetPlatform))
@@ -179,6 +181,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getID() {
 		return id;
 	}
@@ -188,6 +191,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setID(String newID) {
 		String oldID = id;
 		id = newID;
@@ -200,6 +204,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUri() {
 		return uri;
 	}
@@ -209,6 +214,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUri(String newUri) {
 		String oldUri = uri;
 		uri = newUri;
@@ -221,6 +227,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Option> getOptions() {
 		if (options == null) {
 			options = new EDataTypeEList<Option>(Option.class, this, TargetPlatformPackage.LOCATION__OPTIONS);
@@ -233,6 +240,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<IU> getIus() {
 		if (ius == null) {
 			ius = new EObjectContainmentWithInverseEList<IU>(IU.class, this, TargetPlatformPackage.LOCATION__IUS, TargetPlatformPackage.IU__LOCATION);
@@ -400,7 +408,7 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ID: ");
 		result.append(id);
 		result.append(", uri: ");

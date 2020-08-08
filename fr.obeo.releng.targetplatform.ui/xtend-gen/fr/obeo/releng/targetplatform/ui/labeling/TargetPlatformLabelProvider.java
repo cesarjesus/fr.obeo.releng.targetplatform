@@ -32,8 +32,7 @@ public class TargetPlatformLabelProvider extends DefaultEObjectLabelProvider {
     StyledString _xblockexpression = null;
     {
       final StyledString ss = new StyledString();
-      String _uri = object.getUri();
-      ss.append(_uri);
+      ss.append(object.getUri());
       String _iD = object.getID();
       boolean _notEquals = (!Objects.equal(_iD, null));
       if (_notEquals) {
@@ -54,8 +53,7 @@ public class TargetPlatformLabelProvider extends DefaultEObjectLabelProvider {
     StyledString _xblockexpression = null;
     {
       final StyledString ss = new StyledString();
-      String _iD = object.getID();
-      ss.append(_iD);
+      ss.append(object.getID());
       String _version = object.getVersion();
       boolean _notEquals = (!Objects.equal(_version, null));
       if (_notEquals) {
